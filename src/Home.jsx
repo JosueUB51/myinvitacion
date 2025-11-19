@@ -80,7 +80,7 @@ export default function Home() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`http://192.168.0.6:4000/api/invitaciones/${id}`)
+    fetch(`https://backend-boda-production-40aa.up.railway.app/api/invitaciones/${id}`)
       .then(res => res.json())
       .then(info => setData(info))
       .catch(err => console.error(err));
@@ -138,7 +138,7 @@ export default function Home() {
   const confirmFinal = (value) => {
     const estado = value === "si" ? "asistira" : "no_asistira";
 
-    fetch(`http://192.168.0.6:4000/api/invitaciones/${id}/confirmar`, {
+    fetch(`https://backend-boda-production-40aa.up.railway.app/api/invitaciones/${id}/confirmar`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -169,7 +169,7 @@ export default function Home() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`http://192.168.0.6:4000/api/invitaciones/${id}`)
+    fetchfetch(`https://backend-boda-production-40aa.up.railway.app/api/invitaciones/${id}`)
       .then(res => res.json())
       .then(info => {
         setData(info);
@@ -192,7 +192,7 @@ export default function Home() {
     const estado = selection === "si" ? "asistira" : "no_asistira";
 
     // 🚀 Enviar al backend
-    fetch(`http://192.168.0.6:4000/api/invitaciones/${id}/confirmar`, {
+    fetch(`https://backend-boda-production-40aa.up.railway.app/api/invitaciones/${id}/confirmar`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ confirmacion: estado }),
@@ -214,7 +214,7 @@ export default function Home() {
   };
 
   const cancelarConfirmacion = () => {
-    fetch(`http://192.168.0.6:4000/api/invitaciones/${id}/confirmar`, {
+    fetch(`https://backend-boda-production-40aa.up.railway.app/api/invitaciones/${id}/confirmar`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -907,7 +907,7 @@ export default function Home() {
 
           <div className="qr-card">
             <img
-              src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=http://192.168.0.6:5173/qr/${id}`}
+              src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://maricelayhugo2025.com/qr/${id}`}
               alt="QR de acceso"
               className="qr-image"
             />

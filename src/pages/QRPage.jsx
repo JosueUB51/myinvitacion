@@ -7,7 +7,7 @@ export default function QRPage() {
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    fetch(`http://192.168.0.6:4000/api/invitaciones/${id}`)
+    fetch(`https://backend-boda-production-40aa.up.railway.app/api/invitaciones/${id}`)
       .then(res => res.json())
       .then(info => setData(info))
       .catch(err => console.log(err))

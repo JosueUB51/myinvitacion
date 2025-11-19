@@ -15,7 +15,7 @@ export default function Invitacion() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://192.168.0.6:4000/api/invitaciones/${id}`)
+    fetch(`https://backend-boda-production-40aa.up.railway.app/api/invitaciones/${id}`)
       .then(res => res.json())
       .then(data => setData(data))
       .catch(err => console.error(err));
