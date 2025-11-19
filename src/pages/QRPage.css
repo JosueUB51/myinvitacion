@@ -1,0 +1,42 @@
+.qr-check-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgb(7, 7, 7);
+}
+
+.qr-check-card {
+  background: #0b0b0b;
+  padding: 40px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.qr-check-card h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.qr-check-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.qr-check-pases {
+  font-size: 1.3rem;
+}
+
+.qr-check-status {
+  margin-top: 10px;
+}
+
+.qr-check-msg {
+  margin-top: 30px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: green;
+}

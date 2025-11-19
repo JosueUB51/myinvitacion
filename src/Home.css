@@ -1,0 +1,1815 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+}
+
+/* ===== RESET GENERAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* ===== CONTENEDOR GLOBAL ===== */
+.scroll-container {
+  width: 100%;
+  height: auto;
+}
+
+/* ===== SECCIÓN 1 ===== */
+.section1 {
+  position: sticky; /* 👈 cambia de relative a sticky */
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1; /* 👈 asegura que quede debajo de la sección 2 */
+  overflow: hidden;
+}
+
+
+/* ===== IMAGEN DE FONDO ===== */
+.full-image {
+  position: absolute; /* 👈 la fijamos dentro del sticky */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== TEXTO SOBRE LA IMAGEN ===== */
+.text-overlay {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ===== TÍTULO PRINCIPAL ===== */
+.title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(rem, 5vw, 4rem);
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+/* ===== FECHA ===== */
+.date {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+/* ===== SECCIÓN 2 ===== */
+
+/* ===== LOGO SECCIÓN 2 ===== */
+.section2-logo {
+  width: 210px;
+  height: auto;
+  margin-top: -50px;   /* 👈 sube aún más, puedes probar -40px si quieres que toque completamente */
+  margin-bottom: -5px;
+  position: relative;
+  top: 0;
+}
+
+/* ===== SECCIÓN 2 ===== */
+.section2 {
+  position: relative;
+  width: 100%;
+  min-height: 85vh; /* 👈 antes estaba en 100vh, ahora más corta */
+  background-color: #889063;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 40px; /* 👈 deja un pequeño espacio abajo para respiración visual */
+  z-index: 2;
+}
+
+
+
+/* ===== CONTENIDO SECCIÓN 2 ===== */
+.section2-content {
+  max-width: 700px;
+  padding: 0 10px;        /* solo laterales */
+  margin-top: 20px;       /* 🔥 pequeño espacio debajo del logo */
+  color: #222;
+}
+
+
+.section2-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 4vw, 3rem);
+  color: #f8f6f6;
+  margin-bottom: 30px;
+  margin-top: -20px; /* 👈 sube el título 20px */
+}
+
+
+.section2-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #fdfbfb;
+}
+
+.section2-image {
+  width: 95vw;          /* 👈 deja márgenes laterales */
+  max-width: 1000px;    /* límite en pantallas grandes */
+  height: 33vh;         /* 🔥 más alta: ocupa 60% de la altura de la ventana */
+  display: block;
+  margin: 40px auto 0 auto; /* espacio arriba */
+  object-fit: cover;     /* rellena el espacio sin deformarse */
+
+}
+
+/* ===== CONTENEDOR DE LA INVITACIÓN ===== */
+.invitation-card {
+  position: relative;
+  width: 95vw;
+  max-width: 900px;
+  margin: 50px auto 0 auto;
+}
+
+/* ===== IMAGEN ===== */
+.section2-image {
+  width: 100%;
+  height: 30vh;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* ===== TEXTO SOBRE LA IMAGEN ===== */
+.invite-overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #6f6e6e;
+  font-family: 'Playfair Display', serif;
+}
+
+/* ===== TÍTULO "¡Es un placer invitarle!" ===== */
+.invite-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.8rem, 2.5vw, 2rem);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* ===== NOMBRE DEL INVITADO ===== */
+.invite-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  margin-bottom: 30px;
+  color: #050505; /* 🟡 DORADO */
+}
+
+
+/* ===== PASE PARA ===== */
+.invite-pass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: -20px; /* 👈 súbelo un poco */
+}
+
+/* Texto "PASE PARA" y "PERSONAS" */
+.invite-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(1.2rem, 2vw, 1.3rem);
+}
+
+/* CÍRCULO CENTRAL (rosa pastel) */
+.invite-number {
+  background-color: #798648; /* 💗 Rosa pastel */
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
+
+/* ===== SECCIÓN 3 ===== */
+.section3 {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 90vh;  /* 🔥 pantallazo completo */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+/* Fondo */
+.section3-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+  z-index: 1;
+}
+
+/* Overlay general */
+.countdown-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+/* ⭐ Contenedor del título + fecha */
+.countdown-header {
+  margin-top: 12vh; /* 🔥 AJUSTE EXACTO para quedar como en tu foto */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Título */
+.countdown-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  margin: 0;
+  color: white;
+  margin-top: -9vh; 
+}
+
+/* Fecha */
+.countdown-date {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: white;
+  margin: 0;
+  margin-top: -2vh; /* antes 12vh */
+}
+
+/* ===== CONTADOR (no se toca) ===== */
+.countdown-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 1vh; /* 🔥 para que quede abajo como en tu foto */
+}
+
+.count-box {
+  background-color: #78793f85;
+  color: #ffffff;
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ffffff98;
+  backdrop-filter: blur(2px);
+}
+
+.count-number {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.count-label {
+  font-size: 1rem;
+}
+
+
+
+
+/* ===== SECCIÓN 4 ===== */
+.section4 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #889063;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 👈 el contenido inicia más arriba */
+  text-align: center;
+  z-index: 4;
+  overflow: hidden;
+}
+
+.section4-content {
+  margin-top: 30px; /* 👈 sube todo el bloque hacia arriba */
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  max-width: 900px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== FRASE SUPERIOR ===== */
+.section4-phrase {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 3.5vw, 2.6rem);
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.3;
+  margin-top: 10px;       /* 🔼 separación desde arriba */
+  margin-bottom: 50px;    /* 🔽 separación antes de la imagen */
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+
+/* Texto principal */
+.section4-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem); /* 👈 tamaño ajustado para que sean 2 renglones */
+  line-height: 1.3;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px; /* 👈 deja espacio para la imagen */
+  max-width: 700px;
+}
+
+/* Imagen decorativa centrada */
+.section4-image {
+  width: 85vw;           /* 👈 no toca los bordes laterales */
+  max-width: 800px;      /* 👈 límite en pantallas grandes */
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+}
+
+/* ===== OVERLAY SOBRE SEC4 ===== */
+.blessing-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: #2e2e2e;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Texto de bendición */
+.blessing-text {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-top: 160px;
+  margin-bottom: 50px;
+  line-height: 1.3;
+  color: #6f6e6e;
+}
+
+/* Bloque general de padres */
+.parents-block {
+  margin-bottom: 60px;
+}
+
+/* Título “Padres de la novia / novio” */
+.parents-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2rem, 3vw, 2.3rem);
+  margin-bottom: 15px;
+  color: #6f6e6e;
+}
+
+/* Nombres */
+.parent-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  color: #6f6e6e;
+  line-height: 1.5;
+}
+
+/* Posiciones diferentes para cada bloque */
+.bride-parents {
+  margin-top: 100px;  /* 🔼 más espacio debajo de la bendición */
+}
+
+.groom-parents {
+  margin-top: 40px;   /* 🔽 un poco más abajo del bloque anterior */
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .blessing-text {
+    margin-top: 190px;
+  }
+
+  .bride-parents {
+    margin-top: 10px;
+  }
+
+  .parents-block {
+    margin-bottom: 20px;
+  }
+}
+
+
+/* ===== SECCIÓN 5 ===== */
+.section5 {
+  position: relative;
+  width: 100%;
+  height: 78vh; /* 💯 ocupa toda la altura visible */
+  overflow: hidden;
+  z-index: 5;
+}
+
+.section5-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;    /* 🔥 toca los bordes laterales */
+  height: 100%;   /* 🔥 llena la altura */
+  object-fit: cover; /* ajusta sin deformar */
+  display: block;
+}
+
+
+/* ===== SECCIÓN 6 ===== */
+.section6 {
+  position: relative;
+  width: 100%;
+  min-height: 90vh;
+  background-color: #889063;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 6;
+  overflow: visible;
+}
+
+/* Contenedor de la tarjeta */
+.section6-card {
+  position: relative;
+  width: 90vw;
+  max-width: 700px;
+  margin-top: -27px; /* 👈 se sobrepone un poco a la sección anterior */
+}
+
+/* Imagen de fondo (tarjeta sec6.png) */
+.section6-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+/* Overlay encima de la tarjeta */
+.padrinos-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  color: #78793F;
+}
+
+/* Título */
+.padrino-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  color: #78793F;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  position: static; /* 🔥 aseguras que NO afecte a nadie */
+}
+
+
+/* Ícono */
+.padrino-icon {
+  width: 100px;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+/* Rol */
+.padrino-role {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.9rem;
+  color: #6f6e6e;
+  margin-bottom: 40px;
+}
+
+/* Nombres */
+.padrino-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #6f6e6e;
+  line-height: 1.5;
+}
+
+/* Botones laterales */
+.carousel-btn {
+  position: absolute;
+  top: 35%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6f6e6e;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: color 1s, transform 1s;
+}
+
+@media (max-width: 768px) {
+  .padrino-title {
+    position: relative;
+    top: -170px; /* 🔼 súbelo solo en móviles */
+    font-size: 2.5rem; /* 📏 un poco más chico para que quede centrado */
+  }
+
+  .padrino-icon {
+    margin-top: -140px; /* 🔼 sube ligeramente el ícono también */
+    width: 150px; /* 📱 ajusta tamaño del ícono en móvil */
+  }
+
+  .padrino-role {
+    margin-top: 15px; /* 🔼 mantiene el espaciado visual */
+  }
+
+  .padrino-name {
+    margin-top: -10px; /* 🔼 más espacio antes de los nombres */
+    top: 10px; /* 🔼 súbelo solo en móviles */
+    font-size: 1.5rem; /* 🔍 más legible en pantallas pequeñas */
+  }
+}
+.left-btn { left: -5px; }
+.right-btn { right: -5px; }
+
+/* ===== FRASE BÍBLICA ===== */
+.section6-verse {
+  margin-top: 50px; /* ⬇️ bájala más (puedes probar con 60, 80 o 100px) */
+  text-align: center;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+}
+
+
+.verse-text {
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.verse-ref {
+  font-weight: 500;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #fff;
+}
+
+
+/* ===== SECCIÓN 7 (IMAGEN STICKY) ===== */
+.section7 {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;      /* 🔥 ocupa toda pantalla */
+  overflow: hidden;
+  z-index: 7;
+}
+
+.section7-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== SECCIÓN 8 (ITINERARIO NUEVO) ===== */
+.section8 {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 8;
+  margin-top: -60vh;
+  pointer-events: none; /* la tarjeta sí puede hacer clic */
+}
+
+
+.itinerario-container {
+  width: 90%;
+  max-width: 650px;
+  color: rgb(255, 255, 255);
+  font-family: 'Playfair Display', serif;
+  margin: 0 auto;
+  margin-left: 20px;
+  margin-top: 250px;   /* 🔥 SUBE todo el bloque */
+}
+
+
+/* Título */
+.it-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  margin-bottom: 30px;
+
+  margin-top: -260px;   /* 🔥 SUBE el título */
+  margin-left: 30px;   /* 🔥 MUEVE a la derecha */
+}
+
+
+/* ITEM COMPLETO */
+.it-item {
+  display: grid;
+  grid-template-columns: 120px 1fr; /* Ícono | Texto */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  margin-bottom: 45px;
+}
+
+
+/* ICONOS – CENTRADOS Y MÁS GRANDES */
+.it-icon {
+  width: 95px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  justify-self: center;   /* 👈 CENTRADO */
+}
+
+
+/* CONTENEDOR DE LOS TEXTOS */
+.it-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* ✔️ CENTRADO */
+  justify-content: center;
+  width: 240px;            /* ✔️ TODOS LOS TEXTOS MISMO ANCHO */
+  text-align: center;      /* ✔️ CENTRADO */
+}
+
+
+/* TÍTULO DEL EVENTO */
+.it-title-text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  width: 100%;
+  white-space: nowrap; /* evita saltos innecesarios */
+  text-align: center;
+}
+
+
+/* HORA – MÁS A LA DERECHA */
+.it-hour-text {
+  font-size: 1.2rem;
+  margin-top: 5px;
+  white-space: nowrap;  
+  width: 100%;
+  text-align: center;
+}
+
+
+/* LÍNEA CONECTADA DEBAJO DEL ICONO */
+.it-line {
+  position: absolute;
+  left: 15px;       /* 👈 AJUSTA ESTE VALOR si la línea queda un poco chueca */
+  top: 90px;       /* 👈 AJUSTA si la línea está muy arriba/abajo */
+  width: 3px;
+  height: 45px;
+  background-color: white;
+  z-index: 1;
+}
+/* ===== TARJETA VERDE SECTION 8 ===== */
+.itinerario-wrapper {
+  position: relative; 
+  top: -150px; 
+  left: 2px;
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px 25px;
+  background: #8890636b;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  pointer-events: auto;
+
+  /* 🔥 BARRA ROSA FUERTE EN EL BORDE INFERIOR */
+  border-bottom: 40px solid #889063; 
+  
+}
+
+.mh-bar-text {
+  position: absolute;
+  bottom: -25px;         
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: white;
+  letter-spacing: 3px;
+  z-index: 10;
+  pointer-events: none;
+  bottom: -45px;
+}
+
+
+
+
+
+/* ===== SECCIÓN 9 GENERAL ===== */
+.section9 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;            /* 🔥 ya deja espacio */
+  padding-top: 40px;           /* 🔥 espacio entre sección 8 y 9 */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #889063;   /* color de continuidad */
+  z-index: 10;
+}
+
+/* ===== TARJETA ===== */
+.section9-card {
+  position: relative;
+  width: 90%;                  /* 🔥 NO toca bordes */
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+/* ===== Imagen de fondo dentro de la tarjeta ===== */
+.section9-bg-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==== TEXTO: Ubicación ==== */
+.section9-title {
+  position: absolute;
+  top: 10px;                  /* 🔼 SUBIR o BAJAR */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: rgb(1, 0, 0);
+  z-index: 5;
+}
+
+/* ==== Salón ==== */
+.section9-salon {
+  position: absolute;
+  top: 70px;                  
+  left: 53%;
+  transform: translateX(-50%);
+  color: rgb(3, 3, 3);
+  font-family: 'Playfair Display', serif;
+  font-size: 2.3rem;
+  font-weight: normal;        /* 🔥 SIN BOLD */
+  white-space: nowrap;        /* 🔥 NO SE ROMPE */
+  z-index: 5;
+}
+
+
+
+/* ===== Imagen del salón ===== */
+.section9-salon-img {
+  position: absolute;
+  top: 130px;                 /* 🔼 mover */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;                 /* 🔥 NO toca bordes */
+  max-width: 500px;
+  border-radius: 15px;
+  z-index: 5;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* ===== Dirección ===== */
+.section9-direccion {
+  position: absolute;
+  top: 340px;                /* 🔼 mover */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  z-index: 5;
+}
+
+/* ===== Botón ===== */
+.section9-btn {
+  position: absolute;
+  top: 420px;               
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* 💚 RELLENO UNIFORME DEL COLOR QUE PEDISTE */
+  background-color: #7786487d;
+
+  border: 2px solid white;      /* Tu borde blanco */
+  color: rgb(8, 8, 8);
+  
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
+
+  cursor: pointer;
+  z-index: 5;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+
+
+
+
+
+/* ===== SECCIÓN 10 ===== */
+.section10 {
+  position: relative;
+  width: 100%;
+  min-height: 40vh;
+  background-color: #889063;
+  display: flex;
+  flex-direction: column;      /* 👈 LOS PONE UNO DEBAJO DEL OTRO */
+  justify-content: flex-start; /* 👈 TEXTO ARRIBA */
+  align-items: center;         /* 👈 CENTRA TODO */
+  padding-top: 40px;           /* espacio arriba */
+  padding-bottom: 40px;
+  z-index: 11;
+}
+
+/* 🔥 TEXTO — ARRIBA, CENTRADO, BIEN VISIBLE */
+.section10-text {
+  position: relative;
+  top: 0;
+  width: 85%;
+  max-width: 800px;
+  font-family: 'Playfair Display', serif; /* 🔥 Igual que verse-text */
+  font-style: italic;                     /* 🔥 Igual que verse-text */
+  font-size: clamp(1.5rem, 2.5vw, 1.5rem);/* 🔥 Igual que verse-text */
+  text-align: center;
+  line-height: 1.5;
+  color: #fff;
+  margin-top: -200px;
+  margin-bottom: 40px;
+}
+
+
+/* 🔥 IMAGEN — ABAJO Y CENTRADA */
+.section10-img {
+  position: relative;
+  width: 100%;
+  height: 95vh;
+  display: block;
+  object-fit: cover;
+  margin-top: 0;
+}
+
+/* ===== TARJETA ROSA SECTION 10 ===== */
+.section10-card {
+  position: absolute;
+top: calc(3vh);   /* 🔥 usa el alto real del viewport */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 750px;
+  padding: 50px 35px;
+  background: #88906381;
+  backdrop-filter: blur(4px);
+  text-align: center;
+  z-index: 20;
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+}
+
+
+/* Título */
+.section10-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+  margin-top: -40px;   /* 🔼 SUBE el texto */
+}
+
+
+/* Texto dentro de la tarjeta */
+.section10-parrafo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 60px;
+  margin-top: -30px; 
+}
+
+/* Evento */
+.section10-evento {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  margin-top: -30px;
+}
+
+/* Botón */
+.section10-btn {
+  background-color: transparent;     /* 🟢 Fondo transparente */
+  color: white !important;                     /* Letras blancas */
+  border: 2px solid white;           /* 🟢 Borde blanco */
+  padding: 12px 40px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  -webkit-tap-highlight-color: transparent !important;
+  margin-bottom: 35px;
+  box-shadow: none;                  /* ❌ Sin sombra para que sea limpio */
+  backdrop-filter: blur(2px);        /* 🔥 Efecto glass elegante (opcional) */
+}
+
+
+
+/* Texto final */
+.section10-frase {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-top: -20px;
+}
+
+/* ===== ICONO LIVER (logo blanco) ===== */
+.regalo-icon {
+  width: 110px;          /* tamaño exacto al estilo de tu ejemplo */
+  display: block;
+  margin: -60px auto 25px auto;   /* centrado y con separación perfecta */
+}
+
+
+/* ===== ICONO SOBRE (sobre blanco) ===== */
+.sobre-icon {
+  width: 90px;           /* tamaño exacto como en tu imagen */
+  display: block;
+  margin: 35px auto 25px auto;  /* centrado y con espacio */
+}
+
+/* ===== SECCIÓN 11 ===== */
+
+.section11 {
+  position: relative;
+  width: 100%;
+  min-height: 85vh;
+  background-color: #889063;   /* Rosa de continuidad */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;          /* Espacio entre sección 10 y 11 */
+  padding-bottom: 60px;
+  z-index: 12;
+}
+
+/* Card con fondo sec6.png */
+.section11-card {
+  position: relative;
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section11-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== TÍTULO ===== */
+.dress-title {
+  position: absolute;
+  top: 55px;                     /* 🔼 Súbelo o bájalo */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.8rem;
+  color: #000;
+  line-height: 1.2;
+  white-space: nowrap;
+  z-index: 5;
+  margin-top: -40px;
+}
+
+/* ===== SUBTÍTULO FORMAL ===== */
+.dress-sub {
+  position: absolute;
+  top: 200px;                    /* 🔼 Ajusta según te guste */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: normal;
+  color: #000;
+  z-index: 5;
+  margin-top: -70px;
+}
+
+/* ===== ÍCONO ÚNICO CENTRADO ===== */
+.dress-icons {
+  position: absolute;
+  top: 170px;                        /* 🔼 súbelo o bájalo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;                      /* caja centrada */
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+}
+
+.dress-icon {
+  width: 200px;                      /* tamaño del icono */
+  height: auto;
+}
+
+/* ===== TEXTO DE VESTIMENTA ===== */
+.dress-text {
+  position: absolute;
+  top: 360px;                        /* 🔼 SUBE este número para acercarlo al icono */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  text-align: center;
+  line-height: 1.4;
+  color: #000;
+  z-index: 5;
+}
+
+/* Texto pequeño y elegante para los colores */
+.dress-colors {
+  display: block;                 /* que quede en su propia línea */
+  margin-top: 5px;
+  font-size: .80rem;             /* 🔥 más pequeño */
+  font-style: italic;             /* 🔥 elegante */
+  color: #333333;                 /* 🔥 gris suave */
+  opacity: 0.9;                   /* 🔥 toque delicado */
+  letter-spacing: 0.5px;
+}
+
+
+/* ===== SECCIÓN 12 ===== */
+.section12 {
+  position: relative;
+  width: 100%;
+  min-height: 85vh;
+  background-color: #889063;   /* igual que 11 */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  z-index: 13;
+}
+
+/* TARJETA */
+.section12-card {
+  position: relative;
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section12-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* TÍTULO */
+.section12-title {
+  position: absolute;
+  top: 20px;                /* súbelo/bájalo */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #000;
+  line-height: 1.2;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+/* TEXTO */
+.section12-text {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: 88%;            /* 🔥 MÁS ANCHO, texto más recto */
+  max-width: 700px;      /* 🔥 evita que se deforme en pantallas grandes */
+  
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;    /* 🔥 un poquito más grande */
+  color: #78793F;
+  
+  text-align: justify;
+  text-align-last: center;
+  
+  line-height: 1.45;     /* 🔥 MÁS RECTO, menos "estirado" */
+  letter-spacing: 0.2px; /* 🔥 más elegante y aireado */
+  
+  z-index: 5;
+}
+
+
+.section12-text p {
+  margin-bottom: 12px;
+  text-align-last: center;
+}
+
+
+
+/* ==========================
+   SECCIÓN 13 – CONFIRMACIÓN
+   ========================== */
+
+.section13 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;   /* 🔥 Ahora SIEMPRE ocupa TODO el alto */
+  background-color: #889063;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* 🔥 Hace que la tarjeta se acomode arriba */
+  padding-bottom: 80px;
+  z-index: 20; /* 🔥 Más alto para que nada se cruce */
+  overflow-y: visible; /* 🔥 Importante si algo sobresale */
+}
+
+
+/* IMAGEN GRANDE */
+.section13-img-top {
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* TARJETA BLANCA */
+.section13-card {
+  position: relative;
+  width: 90%;
+  max-width: 750px;
+  margin-top: -120px;
+  text-align: center;
+  z-index: 5;
+}
+
+.section13-bg {
+  width: 100%;
+  display: block;
+}
+
+/* TEXTO DENTRO DE LA TARJETA */
+.section13-title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  color: #000;
+  z-index: 10;
+}
+
+.section13-sub {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #000;
+  z-index: 10;
+}
+
+.section13-name {
+  position: absolute;
+  top: 185px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.7rem;
+  color: #000000;
+  z-index: 10;
+  white-space: nowrap;   /* 🔥 NO SE ROMPE NUNCA */
+}
+
+
+
+.section13-text {
+  position: absolute;
+  top: 260px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: #000;
+  z-index: 10;
+}
+
+/* =======================
+   BOTONES SEPARADOS
+   ======================= */
+
+/* 🔘 BOTÓN 1: CONFIRMAR */
+.section13-btn-confirmar {
+  position: absolute;
+  top: 370px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  max-width: 300px;
+
+  background-color: transparent;
+  color: #000000;
+  border: 2px solid #ffffff;
+  padding: 12px 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+
+  border-radius: 0 !important;   /* 🔥 CUADRADO */
+  cursor: pointer;
+  z-index: 10;
+  -webkit-tap-highlight-color: transparent !important; /* 🔥 No azul al presionar */
+}
+
+
+/* ============================
+   🌟 MODAL ELEGANTE – BODA PREMIUM
+============================ */
+
+.confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+
+.confirm-modal {
+  background: #ffffff;
+  width: 85%;
+  max-width: 420px;
+  padding: 35px 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 25px #798648;
+}
+
+.modal-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.4rem;
+  color: #798648;
+  margin-bottom: 15px;
+}
+
+.modal-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.modal-options {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.option-btn {
+  padding: 10px 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  border: 2px solid #889063;
+  background: transparent;
+  color: #889063;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.option-btn.selected {
+  background: #889063;
+  color: white;
+}
+
+.modal-confirm-btn,
+.modal-close-btn {
+  width: 100%;
+  padding: 12px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  background: #889063;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 5px;
+  transition: 0.3s;
+}
+
+.modal-confirm-btn:hover,
+.modal-close-btn:hover {
+  background: #6e7a48;
+}
+
+.pases-input {
+  width: 80%;
+  padding: 12px;
+  margin: 20px auto;
+  font-size: 1.3rem;
+  border-radius: 12px;
+
+  background: #ffffff;            /* fondo limpio */
+  color: #798648;                 /* 🔥 texto en tu color */
+  
+  border: 2px solid #798648;      /* 🔥 borde verde */
+  text-align: center;
+  display: block;
+  outline: none;
+}
+
+.pases-input::placeholder {
+  color: #79864888;               /* placeholder VERDE SUAVECITO */
+}
+
+.pases-input:focus {
+  border-color: #798648;
+  box-shadow: 0 0 10px #798648aa; /* 🔥 glow elegante verde */
+}
+
+
+.pases-input:focus {
+  border-color: #7fa87b;
+  box-shadow: 0 0 8px #7fa87b;
+}
+
+/* ============================
+   🌟 SECCION QR
+============================ */
+
+.sectionQR {
+  position: relative;
+  z-index: 999999 !important;
+  background: #889063de;
+  padding: 10px 20px;
+  text-align: center;
+
+  border: 5px solid #354024;   /* 🤍 borde blanco */        /* 🔥 esquinas redondeadas */
+}
+
+
+
+.qr-title {
+  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  margin-bottom: 30px;
+  color: #fffffff5;
+}
+
+.qr-card {
+  position: relative;
+  z-index: 1000000;
+}
+
+
+.qr-image {
+  width: 160px;
+  height: 160px;
+  margin-bottom: 30px;
+}
+
+.qr-text {
+  margin-top: -1px;
+  font-size: 1.3rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+
+
+/* ===== SECCIÓN 14 ===== */
+.section14 {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  z-index: 15;
+}
+
+
+/* Imagen de fondo */
+.section14-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;           /* 🔥 toca los bordes laterales */
+  height: 100%;          /* 🔥 llena la altura exacta */
+  object-fit: cover;     /* se ajusta sin deformarse */
+  display: block;
+}
+
+
+/* ===== SECCIÓN 15 ===== */
+.section15 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #889063; /* 🔥 rosa igual al de tu imagen */
+  padding-top: 90px;  
+  padding-bottom: 0;
+  position: relative;
+  z-index: 16; 
+}
+
+/* 🔝 Parte superior (rosa) */
+.s15-top {
+  background: #889063;
+  text-align: center;
+  padding: 60px 25px 80px 25px; 
+}
+
+/* Verso */
+.s15-verso {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+
+  font-size: 1.3rem;      /* 🔥 le da presencia sin verse apretado */
+  color: #ffffff;
+
+  line-height: 1.55;       /* 🔥 renglones más aireados, más elegantes */
+
+  width: 92%;              /* 🔥 MÁS ANCHO → texto más largo y recto */
+  max-width: 800px;        /* 🔥 límite elegante en pantallas grandes */
+
+  margin: -100px auto 30px;  /* 🔥 mejor proporción en vertical */
+
+  text-align: justify;     
+  text-align-last: center;
+
+  letter-spacing: 0.3px;   /* 🔥 ligeramente más aire entre letras */
+}
+
+
+
+
+/* Cita */
+.s15-cita {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-top: 30px;
+}
+
+/* 🔘 Parte inferior (blanca) */
+.s15-bottom {
+  background: #ffffff;
+  padding: 25px 20px 30px 20px;  /* 🔥 MUCHÍSIMO más compacto */
+  text-align: center;
+  margin-top: -40px;            /* 🔥 une más la rosa con la blanca */
+}
+
+
+/* Copyright */
+.s15-copy {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  color: #444;                         /* 🔥 tono gris elegante */
+  letter-spacing: 1.5px;               /* 🔥 MUY elegante */
+  font-weight: 400;                    /* 🔥 no tan bold, más fino */
+  text-transform: uppercase;           /* 🔥 tipo invitación premium */
+  opacity: 0.85;                       /* 🔥 elegante y tenue */
+}
+
+.music-btn {
+  position: absolute; 
+  bottom: 700px;
+  right: 1px;
+  z-index: 99999;
+
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(6px);
+
+  /* 🔥 Forma rectangular elegante */
+  width: 55px;     /* ancho */
+  height: 38px;    /* alto */
+
+  border-radius: 10px;  /* ya NO es círculo */
+
+  border: 2px solid rgba(255, 255, 255, 0.9);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  /* 💥 Ícono más grande y más visible */
+  font-size: 1rem;
+  color: #ffffff;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+
+/* ===========================
+   ✨ ANIMACIONES SECCIÓN 1
+   =========================== */
+
+/* Imagen apareciendo desde el centro */
+@keyframes imageZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Texto principal bajando desde arriba */
+@keyframes titleSlideDownSafe {
+  0% {
+    opacity: 0;
+    transform: translateY(-25px);  /* ✔️ YA NO toca tu translateX(-50%) */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fecha apareciendo desde abajo */
+@keyframes dateFadeUpSafe {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);   /* ✔️ seguro, sin interferencias */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Aplicación SIN ROMPER DISEÑO EXISTENTE ===== */
+.section1 .full-image {
+  animation: imageZoomIn 1.6s ease-out forwards;
+}
+
+.section1 .title {
+  opacity: 0;
+  animation: titleSlideDownSafe 1.4s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+.section1 .date {
+  opacity: 0;
+  animation: dateFadeUpSafe 1.4s ease-out forwards;
+  animation-delay: 0.9s;
+}
+
+/* ===========================
+   ✨ ANIMACIÓN SOLO PARA INVITE-NAME
+   =========================== */
+
+/* POP IN CENTER — Cinemático */
+@keyframes popInCenter {
+  0% {
+    opacity: 0;
+    transform: scale(0.4); /* pequeño y centrado */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Activación cuando entra al viewport */
+.invite-name.animate {
+  opacity: 0;
+  animation: popInCenter 2.6s ease-out forwards; /* lento, elegante */
+  animation-delay: 0.3s; /* puedes aumentar si lo quieres más tardado */
+}
+
+/* ===========================
+   ✨ ANIMACIONES SECCIÓN 3
+   =========================== */
+
+/* Count-box: de ABAJO hacia ARRIBA */
+@keyframes slideUpSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* más distancia → más elegante */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== Estado inicial ====== */
+.animate-hidden {
+  opacity: 0;
+}
+
+/* ====== Activación SOLO para las cajas ====== */
+.count-box.animate {
+  animation: slideUpSmooth 2.4s ease-out forwards; /* lento y elegante */
+}
+
+/* ===========================
+   ✨ ANIMACIÓN SECCIÓN 6 — Versículo
+   =========================== */
+
+/* Animación: de ABAJO → ARRIBA */
+@keyframes verseSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px); /* más abajo para elegancia */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estado inicial oculto */
+.animate-hidden {
+  opacity: 0;
+}
+
+/* Activación cuando recibe .animate */
+.section6-verse.animate {
+  animation: verseSlideUp 2.4s ease-out forwards; /* lento y suave */
+}
+
+/* ===========================
+   ✨ ANIMACIÓN SECCIÓN 13 — Nombre
+   =========================== */
+
+/* Animación sin tocar el translateX existente */
+@keyframes popInCenterSafe {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.4); /* mantiene tu posición */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);   /* igual, sin mover */
+  }
+}
+
+/* Estado inicial */
+.section13-name.animate-hidden {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.4);
+}
+
+/* Activación cuando recibe .animate */
+.section13-name.animate {
+  animation: popInCenterSafe 2.4s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* ===========================
+   ✨ ANIMACIÓN SECCIÓN 15 — Verso y Cita
+   =========================== */
+
+/* Efecto: de abajo hacia arriba (seguro y elegante) */
+@keyframes s15SlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px); /* más abajo = más suave */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ESTADO OCULTO */
+.s15-verso.animate-hidden,
+.s15-cita.animate-hidden {
+  opacity: 0;
+  transform: translateY(40px); /* mantiene diseño intacto */
+}
+
+/* VERSO */
+.s15-verso.animate {
+  animation: s15SlideUp 2.4s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+/* CITA */
+.s15-cita.animate {
+  animation: s15SlideUp 2.7s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+
+
