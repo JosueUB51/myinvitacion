@@ -169,7 +169,7 @@ export default function Home() {
   useEffect(() => {
     if (!id) return;
 
-    fetchfetch(`https://backend-boda-production-40aa.up.railway.app/api/invitaciones/${id}`)
+    fetch(`https://backend-boda-production-40aa.up.railway.app/api/invitaciones/${id}`)
       .then(res => res.json())
       .then(info => {
         setData(info);
