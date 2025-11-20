@@ -67,12 +67,17 @@ export default function Home() {
   }, [])
 
   const toggleMusic = () => {
-    if (audioRef.current) {
-      if (isPlaying) audioRef.current.pause()
-      else audioRef.current.play()
-      setIsPlaying(!isPlaying)
-    }
+  if (!audioRef.current) return;
+
+  if (isPlaying) {
+    audioRef.current.pause();
+  } else {
+    audioRef.current.play().catch(() => {});
   }
+
+  setIsPlaying(!isPlaying);
+};
+
 
   const { id } = useParams();
   const [data, setData] = useState(null);
@@ -235,25 +240,45 @@ export default function Home() {
 
 
 
-
+// sonido 
   useEffect(() => {
-    const tryPlay = () => {
-      if (audioRef.current) {
-        audioRef.current.muted = false;
-        audioRef.current.volume = 0.28;
-        audioRef.current.play().catch(() => { });
-        setIsPlaying(true);
-      }
+    const attemptPlay = () => {
+      if (!audioRef.current) return;
 
-      // Evitamos que intente reproducir varias veces
-      window.removeEventListener("touchstart", tryPlay);
-      window.removeEventListener("click", tryPlay);
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          // si falla, intenta de nuevo al siguiente click
+        });
     };
 
-    window.addEventListener("touchstart", tryPlay, { once: true });
-    window.addEventListener("click", tryPlay, { once: true });
+    // iOS y Android necesitan interacción directa del usuario
+    document.addEventListener("touchstart", attemptPlay, { once: true });
+    document.addEventListener("click", attemptPlay, { once: true });
 
+    return () => {
+      document.removeEventListener("touchstart", attemptPlay);
+      document.removeEventListener("click", attemptPlay);
+    };
   }, []);
+
+  useEffect(() => {
+  if (/Android/i.test(navigator.userAgent)) {
+    // pequeño delay para que el audio inicialice
+    setTimeout(() => {
+      if (audioRef.current) {
+        audioRef.current.load();
+      }
+    }, 300);
+  }
+}, []);
+
+
+
+
 
 
   useEffect(() => {
@@ -446,7 +471,8 @@ export default function Home() {
     <div className="scroll-container">
 
       {/* 🎵 AUDIO INVISIBLE */}
-      <audio ref={audioRef} src={music1} loop muted />
+      <audio ref={audioRef} src={music1} loop />
+
 
 
       {/* ================= SECCIÓN 1 ================= */}
