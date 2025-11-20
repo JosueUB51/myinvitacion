@@ -58,25 +58,32 @@ export default function Home() {
       audioRef.current.volume = 0.4;
       audioRef.current
         .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
+        .then(() => setIsPlaying(true))
         .catch(() => {
-          console.log("El dispositivo aún no permitió el autoplay.");
+          console.log("Autoplay aún bloqueado.");
         });
     };
 
-    // Se activa con cualquier toque en la pantalla
+    // 🎵 Tap, click, cualquier toque
     window.addEventListener("touchstart", unlock, { once: true });
     window.addEventListener("pointerdown", unlock, { once: true });
     window.addEventListener("click", unlock, { once: true });
+
+    // 🎵 PRIMER SCROLL (para Android)
+    const scrollUnlock = () => {
+      unlock();
+      window.removeEventListener("scroll", scrollUnlock);
+    };
+    window.addEventListener("scroll", scrollUnlock, { once: true });
 
     return () => {
       window.removeEventListener("touchstart", unlock);
       window.removeEventListener("pointerdown", unlock);
       window.removeEventListener("click", unlock);
+      window.removeEventListener("scroll", scrollUnlock);
     };
   }, []);
+
 
   const [showQRSection, setShowQRSection] = useState(false);
 
