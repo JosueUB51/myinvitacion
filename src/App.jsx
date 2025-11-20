@@ -1,12 +1,21 @@
 import './App.css'
 import clickImage from './assets/clik.png'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 function App() {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const handleClick = () => {
-    navigate('/home') // 🔥 redirige a la vista Home
+    // ejemplo: /invitacion/12 → ["", "invitacion", "12"]
+    const parts = location.pathname.split("/")
+    const id = parts[2]  // aquí viene el ID dinámico
+
+    if (id) {
+      navigate(`/invitacion/${id}`)
+    } else {
+      alert("No se encontró ID en la URL")
+    }
   }
 
   return (

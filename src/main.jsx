@@ -12,16 +12,20 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
 
-        {/* Página principal (solo si quieres un admin o landing) */}
+        {/* Pantalla inicial */}
         <Route path="/" element={<App />} />
 
-        {/* Invitación dinámica real */}
+        {/* NUEVA ruta para que App.jsx pueda enviar aquí */}
+        <Route path="/home" element={<Home />} />
+
+        {/* Invitación real con ID */}
         <Route path="/invitacion/:id" element={<Home />} />
 
-        {/* Página para cuando escaneen el QR */}
+        {/* Página del QR */}
         <Route path="/qr/:id" element={<QRPage />} />
 
       </Routes>
+
     </BrowserRouter>
   </StrictMode>,
 )
