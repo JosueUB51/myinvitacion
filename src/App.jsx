@@ -12,7 +12,8 @@ function App() {
     const id = parts[2]  // aquí viene el ID dinámico
 
     if (id) {
-      navigate(`/invitacion/${id}`)
+      // 🚀 llevar al Home real
+      navigate(`/home/${id}`)
     } else {
       alert("No se encontró ID en la URL")
     }
