@@ -1589,15 +1589,13 @@ top: calc(3vh);   /* 🔥 usa el alto real del viewport */
   bottom: 700px;
   right: 1px;
   z-index: 99999;
-
   background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(6px);
 
-  /* 🔥 Forma rectangular elegante */
-  width: 55px;     /* ancho */
-  height: 38px;    /* alto */
+  width: 55px;
+  height: 55px;
 
-  border-radius: 10px;  /* ya NO es círculo */
+  border-radius: 50%; /* 🔥 REDONDO PERFECTO */
 
   border: 2px solid rgba(255, 255, 255, 0.9);
 
@@ -1608,12 +1606,12 @@ top: calc(3vh);   /* 🔥 usa el alto real del viewport */
   cursor: pointer;
   transition: 0.3s ease;
 
-  /* 💥 Ícono más grande y más visible */
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #ffffff;
 
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
+
 
 
 /* ===========================
