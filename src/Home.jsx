@@ -239,22 +239,22 @@ export default function Home() {
   useEffect(() => {
     const tryPlay = () => {
       if (audioRef.current) {
-        audioRef.current.muted = false
-        audioRef.current.play().catch(() => { })
+        audioRef.current.muted = false;
+        audioRef.current.volume = 0.28;
+        audioRef.current.play().catch(() => { });
+        setIsPlaying(true);
       }
-      window.removeEventListener("click", tryPlay)
-      window.removeEventListener("touchstart", tryPlay)
-    }
 
-    window.addEventListener("click", tryPlay)
-    window.addEventListener("touchstart", tryPlay)
+      // Evitamos que intente reproducir varias veces
+      window.removeEventListener("touchstart", tryPlay);
+      window.removeEventListener("click", tryPlay);
+    };
 
-    // Intento inicial por si el navegador lo permite
-    if (audioRef.current) {
-      audioRef.current.volume = 0.25
-      audioRef.current.play().catch(() => { })
-    }
-  }, [])
+    window.addEventListener("touchstart", tryPlay, { once: true });
+    window.addEventListener("click", tryPlay, { once: true });
+
+  }, []);
+
 
   useEffect(() => {
     const elements = document.querySelectorAll(".animate-on-scroll");
@@ -276,32 +276,32 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-  const section2 = document.querySelector(".section2");
+    const section2 = document.querySelector(".section2");
 
-  // Solo animaremos el invite-name
-  const inviteName = document.querySelector(".invite-name");
+    // Solo animaremos el invite-name
+    const inviteName = document.querySelector(".invite-name");
 
-  // Ocultar inicialmente
-  inviteName.classList.add("animate-hidden");
+    // Ocultar inicialmente
+    inviteName.classList.add("animate-hidden");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
 
-          inviteName.classList.add("animate");
-          inviteName.classList.remove("animate-hidden");
+            inviteName.classList.add("animate");
+            inviteName.classList.remove("animate-hidden");
 
-        }
-      });
-    },
-    { threshold: 0.3 } // se activa cuando el 30% de la sección es visible
-  );
+          }
+        });
+      },
+      { threshold: 0.3 } // se activa cuando el 30% de la sección es visible
+    );
 
-  if (section2) observer.observe(section2);
+    if (section2) observer.observe(section2);
 
-  return () => observer.disconnect();
-}, []);
+    return () => observer.disconnect();
+  }, []);
 
 
   useEffect(() => {
