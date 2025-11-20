@@ -1592,8 +1592,8 @@ top: calc(3vh);   /* 🔥 usa el alto real del viewport */
   background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(6px);
 
-  width: 55px;
-  height: 55px;
+  width: 45px;
+  height: 45px;
 
   border-radius: 50%; /* 🔥 REDONDO PERFECTO */
 
