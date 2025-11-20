@@ -50,6 +50,34 @@ export default function Home() {
   // ============================
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef(null)
+  // 🔥 AUTOPLAY cuando el usuario toque la pantalla (iOS + Android)
+  useEffect(() => {
+    const unlock = () => {
+      if (!audioRef.current) return;
+
+      audioRef.current.volume = 0.4;
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          console.log("El dispositivo aún no permitió el autoplay.");
+        });
+    };
+
+    // Se activa con cualquier toque en la pantalla
+    window.addEventListener("touchstart", unlock, { once: true });
+    window.addEventListener("pointerdown", unlock, { once: true });
+    window.addEventListener("click", unlock, { once: true });
+
+    return () => {
+      window.removeEventListener("touchstart", unlock);
+      window.removeEventListener("pointerdown", unlock);
+      window.removeEventListener("click", unlock);
+    };
+  }, []);
+
   const [showQRSection, setShowQRSection] = useState(false);
 
 
@@ -64,14 +92,18 @@ export default function Home() {
   const toggleMusic = () => {
     if (!audioRef.current) return;
 
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play().catch(() => { });
-    }
+    audioRef.current.volume = 0.4;
 
-    setIsPlaying(!isPlaying);
+    audioRef.current
+      .play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch(() => {
+        console.log("Android bloqueó el autoplay hasta tocar el botón.");
+      });
   };
+
 
 
   const { id } = useParams();
@@ -231,46 +263,6 @@ export default function Home() {
       })
       .catch(err => console.log(err));
   };
-
-
-
-
-  // sonido 
-  // sonido 
-  useEffect(() => {
-    const unlock = () => {
-      if (!audioRef.current) return;
-
-      audioRef.current.volume = 0.25;
-
-      audioRef.current
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => { });
-    };
-
-    // iOS + Android
-    window.addEventListener("click", unlock, { once: true });
-    window.addEventListener("touchstart", unlock, { once: true });
-    window.addEventListener("pointerdown", unlock, { once: true });
-
-    // 🔥 Fallback especial para Android Chrome
-    setTimeout(() => {
-      audioRef.current?.play().catch(() => { });
-    }, 1200);
-
-    return () => {
-      window.removeEventListener("click", unlock);
-      window.removeEventListener("touchstart", unlock);
-      window.removeEventListener("pointerdown", unlock);
-    };
-  }, []);
-
-
-
-
-
-
 
 
 
