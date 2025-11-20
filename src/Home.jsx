@@ -3,7 +3,6 @@ import './Home.css'
 import { useState, useEffect, useRef } from 'react'
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa"
 import { io } from "socket.io-client";
-import { Audio } from "expo-av";
 
 
 
@@ -62,18 +61,17 @@ export default function Home() {
 
 
 
-  const toggleMusic = async () => {
-    if (!sound) return;
+  const toggleMusic = () => {
+    if (!audioRef.current) return;
 
     if (isPlaying) {
-      await sound.pauseAsync();
+      audioRef.current.pause();
     } else {
-      await sound.playAsync();
+      audioRef.current.play().catch(() => { });
     }
 
     setIsPlaying(!isPlaying);
   };
-
 
 
   const { id } = useParams();
@@ -184,25 +182,6 @@ export default function Home() {
       .catch(err => console.error(err));
   }, [id]);
 
-  const [sound, setSound] = useState(null);
-
-  useEffect(() => {
-    async function loadSound() {
-      const { sound } = await Audio.Sound.createAsync(
-        music1,
-        { volume: 0.3, isLooping: true }
-      );
-      setSound(sound);
-    }
-
-    loadSound();
-
-    return () => {
-      if (sound) sound.unloadAsync();
-    };
-  }, []);
-
-
 
 
 
@@ -257,6 +236,24 @@ export default function Home() {
 
 
   // sonido 
+  useEffect(() => {
+    const unlock = () => {
+      if (!audioRef.current) return;
+
+      audioRef.current.volume = 0.25;
+
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => { });
+    };
+
+    window.addEventListener("pointerdown", unlock, { once: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", unlock);
+    };
+  }, []);
 
 
 
@@ -282,29 +279,6 @@ export default function Home() {
 
     return () => observer.disconnect();
   }, []);
-
-
-  useEffect(() => {
-    const handler = async () => {
-      if (sound && !isPlaying) {
-        try {
-          await sound.playAsync();
-          setIsPlaying(true);
-        } catch (e) { }
-      }
-    };
-
-    window.addEventListener("touchstart", handler, { once: true });
-    window.addEventListener("click", handler, { once: true });
-
-    return () => {
-      window.removeEventListener("touchstart", handler);
-      window.removeEventListener("click", handler);
-    };
-  }, [sound]);
-
-
-
 
   useEffect(() => {
     const section2 = document.querySelector(".section2");
@@ -475,6 +449,19 @@ export default function Home() {
 
   return (
     <div className="scroll-container">
+
+      {/* 🎵 AUDIO INVISIBLE */}
+      <audio
+        ref={audioRef}
+        src={music1}
+        preload="auto"
+        playsInline
+        loop
+      />
+
+
+
+
 
       {/* ================= SECCIÓN 1 ================= */}
       <section className="section section1">
