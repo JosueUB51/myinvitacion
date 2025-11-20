@@ -47,7 +47,7 @@ export default function Home() {
   // ============================
   // 🎵 CONTROL DE MÚSICA
   // ============================
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef(null)
   const [showQRSection, setShowQRSection] = useState(false);
 
@@ -59,24 +59,18 @@ export default function Home() {
   const [pasesUsados, setPasesUsados] = useState(1);
 
 
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = 0.25
-      audioRef.current.play().catch(() => { })
-    }
-  }, [])
 
   const toggleMusic = () => {
-  if (!audioRef.current) return;
+    if (!audioRef.current) return;
 
-  if (isPlaying) {
-    audioRef.current.pause();
-  } else {
-    audioRef.current.play().catch(() => {});
-  }
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play().catch(() => { });
+    }
 
-  setIsPlaying(!isPlaying);
-};
+    setIsPlaying(!isPlaying);
+  };
 
 
   const { id } = useParams();
@@ -240,41 +234,26 @@ export default function Home() {
 
 
 
-// sonido 
+  // sonido 
   useEffect(() => {
-    const attemptPlay = () => {
+    const unlock = () => {
       if (!audioRef.current) return;
+
+      audioRef.current.volume = 0.25;
 
       audioRef.current
         .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch(() => {
-          // si falla, intenta de nuevo al siguiente click
-        });
+        .then(() => setIsPlaying(true))
+        .catch(() => { });
     };
 
-    // iOS y Android necesitan interacción directa del usuario
-    document.addEventListener("touchstart", attemptPlay, { once: true });
-    document.addEventListener("click", attemptPlay, { once: true });
+    window.addEventListener("pointerdown", unlock, { once: true });
 
     return () => {
-      document.removeEventListener("touchstart", attemptPlay);
-      document.removeEventListener("click", attemptPlay);
+      window.removeEventListener("pointerdown", unlock);
     };
   }, []);
 
-  useEffect(() => {
-  if (/Android/i.test(navigator.userAgent)) {
-    // pequeño delay para que el audio inicialice
-    setTimeout(() => {
-      if (audioRef.current) {
-        audioRef.current.load();
-      }
-    }, 300);
-  }
-}, []);
 
 
 
@@ -471,7 +450,14 @@ export default function Home() {
     <div className="scroll-container">
 
       {/* 🎵 AUDIO INVISIBLE */}
-      <audio ref={audioRef} src={music1} loop />
+      <audio
+        ref={audioRef}
+        src={music1}
+        preload="auto"
+        playsInline
+        loop
+      />
+
 
 
 
