@@ -236,6 +236,7 @@ export default function Home() {
 
 
   // sonido 
+  // sonido 
   useEffect(() => {
     const unlock = () => {
       if (!audioRef.current) return;
@@ -248,12 +249,24 @@ export default function Home() {
         .catch(() => { });
     };
 
+    // iOS + Android
+    window.addEventListener("click", unlock, { once: true });
+    window.addEventListener("touchstart", unlock, { once: true });
     window.addEventListener("pointerdown", unlock, { once: true });
 
+    // 🔥 Fallback especial para Android Chrome
+    setTimeout(() => {
+      audioRef.current?.play().catch(() => { });
+    }, 1200);
+
     return () => {
+      window.removeEventListener("click", unlock);
+      window.removeEventListener("touchstart", unlock);
       window.removeEventListener("pointerdown", unlock);
     };
   }, []);
+
+
 
 
 
@@ -454,10 +467,10 @@ export default function Home() {
       <audio
         ref={audioRef}
         src={music1}
-        preload="auto"
         playsInline
         loop
       />
+
 
 
 
